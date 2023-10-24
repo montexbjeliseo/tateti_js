@@ -28,6 +28,7 @@
     justify-content: center;
     align-items: center;
     font-size: 4rem;
+    transition: 0.5s;
 }
 
 .x {
@@ -40,6 +41,12 @@
 
 .celda.clickeada {
     background-color: #d1d1d1;
+    transition: 0.5s;
+}
+
+.botones {
+    display: flex;
+    gap: 20px;
 }
 
 .boton-secundario {
@@ -64,6 +71,7 @@
 
 .resaltado {
     background-color: yellow !important;
+    transition: 0.5s;
 }
 
 
@@ -79,4 +87,16 @@
     align-items: center;
     color: #fff;
     flex-direction: column;
+    transition: 0.5s;
+}
+
+.github {
+    padding: 0px;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    text-decoration: none;
+    background-image: url('github.com_.png');
+    background-repeat: no-repeat;
+    background-size: contain;
 }

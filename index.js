@@ -21,10 +21,12 @@ const sonidos = {
 
     ; (function () {
         document.addEventListener("DOMContentLoaded", () => {
+            cargarDatos();
             const app = document.getElementById('app');
             app.appendChild(crearPanelInfo());
             app.appendChild(crearTablero());
             app.appendChild(crearPanelCreditos());
+            actualizarMarcador();
             mostrarMensaje({ titulo: 'Bienvenido', mensaje: '¡Empieza el juego!', botones: [{ texto: 'Jugar', callback: iniciarJuego }] });
         });
     })();
@@ -77,7 +79,7 @@ const clickCelda = (e) => {
     }
     const celda = e.target;
     if (celda.classList.contains('clickeada')) {
-        mostrarMensaje({titulo: 'Celda ocupada', mensaje: 'La celda ya se encuentra ocupada'});
+        mostrarMensaje({ titulo: 'Celda ocupada', mensaje: 'La celda ya se encuentra ocupada' });
         return;
     }
     celda.classList.add('clickeada', datosDelJuego.turno);
@@ -92,11 +94,29 @@ const crearPanelCreditos = () => {
     const botones = document.createElement('div');
     botones.classList.add('botones');
     const irAGithubBoton = document.createElement('a');
-    irAGithubBoton.textContent = 'Creado por montexbjeliseo';
+    // irAGithubBoton.textContent = 'montexbjeliseo';
     irAGithubBoton.href = 'https://github.com/montexbjeliseo';
     irAGithubBoton.target = '_blank';
     irAGithubBoton.classList.add('boton-secundario');
+    irAGithubBoton.classList.add('github');
     botones.appendChild(irAGithubBoton);
+
+    const borrarDatosBoton = document.createElement("button");
+    borrarDatosBoton.textContent = "Borrar datos";
+    borrarDatosBoton.classList.add('boton-secundario');
+
+    const borrarDatos = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
+
+    borrarDatosBoton.addEventListener('click', () => mostrarMensaje({
+        titulo: 'Borrar datos', 
+        mensaje: '¿Quieres borrar todos los datos?', 
+        botones: [{ texto: 'Borrar', callback: borrarDatos }, { texto: 'Cancelar', callback: () => {} }]
+    }));
+
+    botones.appendChild(borrarDatosBoton);
     return botones;
 }
 
@@ -126,6 +146,7 @@ const comprobarGanador = () => {
 
             mostrarMensaje({ titulo: 'Juego terminado', mensaje: `¡Jugador ${combinacion[0].innerText.toUpperCase()} es el ganador!`, botones: [{ texto: 'Nuevo juego', callback: iniciarJuego }] });
             sonidos.win.play();
+            guardarDatos();
             break;
         }
     }
@@ -187,6 +208,7 @@ const mostrarMensaje = ({ titulo, mensaje, botones }) => {
     const cerrarModal = () => modal.parentNode.removeChild(modal);
 
     if (botones) {
+        const containerBotones = document.createElement('div');
         for (let boton of botones) {
             const modalBoton = document.createElement('button');
             modalBoton.textContent = boton.texto;
@@ -194,8 +216,9 @@ const mostrarMensaje = ({ titulo, mensaje, botones }) => {
                 boton.callback();
                 cerrarModal();
             });
-            modal.appendChild(modalBoton);
+            containerBotones.appendChild(modalBoton);
         }
+        modal.appendChild(containerBotones);
     } else {
         const aceptarBoton = document.createElement('button');
         aceptarBoton.textContent = 'Ok';
@@ -204,4 +227,18 @@ const mostrarMensaje = ({ titulo, mensaje, botones }) => {
     }
 
     document.body.appendChild(modal);
+}
+
+const cargarDatos = () => {
+    const datos = localStorage.getItem('tateti');
+    if (datos) {
+        const { puntos, enJuego, turno } = JSON.parse(datos);
+        datosDelJuego.puntos = puntos;
+        datosDelJuego.enJuego = enJuego;
+        datosDelJuego.turno = turno;
+    }
+}
+
+const guardarDatos = () => {
+    localStorage.setItem('tateti', JSON.stringify(datosDelJuego));
 }
