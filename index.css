@@ -4,12 +4,13 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    user-select: none;
 }
 
 .marcador {
     font-size: 2rem;
     padding: 10px;
-    border: 1px solid #333;
+    border: 5px solid #333;
     border-radius: 5px;
 }
 
@@ -17,13 +18,17 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    width: 300px;
-    height: 300px;
+    width: 306px;
+    height: 306px;
+    background-image: url('tablero_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 5px solid #333;
 }
 .celda {
     width: 100px;
     height: 100px;
-    border: 1px solid black;
+    border: 1px solid rgba(7, 6, 6, 0.623);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +45,7 @@
 }
 
 .celda.clickeada {
-    background-color: #d1d1d1;
+    background-color: #d1d1d141;
     transition: 0.5s;
 }
 
@@ -70,7 +75,7 @@
 }
 
 .resaltado {
-    background-color: yellow !important;
+    background-color: rgba(255, 255, 0, 0.349) !important;
     transition: 0.5s;
 }
 
