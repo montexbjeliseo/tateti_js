@@ -53,11 +53,12 @@ const iniciarJuego = () => {
     datosDelJuego.enJuego = true;
     datosDelJuego.turno = 'x';
     datosDelJuego.fichasDentro = 0;
-
     const fichasContainer = document.querySelector('.fichas');
     fichasContainer.append(...document.querySelectorAll('.ficha.x'));
     fichasContainer.append(...document.querySelectorAll('.ficha.o'));
     desbloquearFichas();
+    mostrarMensaje(`Toca mover al jugador ${datosDelJuego.turno.toUpperCase()}`);
+
 }
 
 const cambiarTurno = () => {
