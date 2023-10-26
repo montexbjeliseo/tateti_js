@@ -8,6 +8,11 @@ const datosDelJuego = {
     fichasDentro: 0
 };
 
+const sonidos = {
+    drop: new Audio('drop.wav'),
+    win: new Audio('win_2.mp3'),
+}
+
 const movimientos = [
     [0, 1],
     [0, 3],
@@ -82,6 +87,7 @@ const desbloquearFichas = () => {
 
 
 const arrastrar = (event) => {
+    sonidos.drop.play();
     if (event.target.parentNode.classList.contains('celda')) {
         event.dataTransfer.setData("text", 'tablero ' + event.target.id);
     } else {
@@ -99,6 +105,7 @@ const soltar = (event) => {
     if (!event.target.classList.contains('ficha')) {
         if (data[0] === 'fuera') {
             event.target.appendChild(document.getElementById(data[1]));
+            sonidos.drop.play();
             datosDelJuego.fichasDentro++;
             comprobarGanador();
             cambiarTurno();
@@ -108,6 +115,7 @@ const soltar = (event) => {
             const desdeCelda = document.getElementById(data[1]).parentNode.id.split('-')[1];
             if (puedeMover(event.target.id.split('-')[1], desdeCelda)) {
                 event.target.appendChild(document.getElementById(data[1]));
+                sonidos.drop.play();
                 comprobarGanador();
                 cambiarTurno();
                 desbloquearFichas();
@@ -149,6 +157,7 @@ const comprobarGanador = () => {
         datosDelJuego.enJuego = false;
         datosDelJuego.puntos[ganador]++;
         actualizarMarcador();
+        sonidos.win.play();
     }
 
 }
