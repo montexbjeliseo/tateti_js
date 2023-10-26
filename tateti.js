@@ -97,7 +97,9 @@ const arrastrar = (event) => {
 }
 
 const permitirSoltar = (event) => {
-    event.preventDefault();
+    if (event.target.textContent === '') {
+        event.preventDefault();
+    }
 }
 
 const soltar = (event) => {
