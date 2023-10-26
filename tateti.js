@@ -5,7 +5,7 @@ const datosDelJuego = {
         o: 0
     },
     enJuego: true,
-    fichasDentro: 0
+    movimientosHechos: 0
 };
 
 const sonidos = {
@@ -52,7 +52,7 @@ const movimientos = [
 const iniciarJuego = () => {
     datosDelJuego.enJuego = true;
     datosDelJuego.turno = 'x';
-    datosDelJuego.fichasDentro = 0;
+    datosDelJuego.movimientosHechos = 0;
     const fichasContainer = document.querySelector('.fichas');
     fichasContainer.append(...document.querySelectorAll('.ficha.x'));
     fichasContainer.append(...document.querySelectorAll('.ficha.o'));
@@ -107,16 +107,17 @@ const soltar = (event) => {
         if (data[0] === 'fuera') {
             event.target.appendChild(document.getElementById(data[1]));
             sonidos.drop.play();
-            datosDelJuego.fichasDentro++;
+            datosDelJuego.movimientosHechos++;
             comprobarGanador();
             cambiarTurno();
             desbloquearFichas();
 
-        } else if (datosDelJuego.fichasDentro === 6) {
+        } else if (datosDelJuego.movimientosHechos >= 6) {
             const desdeCelda = document.getElementById(data[1]).parentNode.id.split('-')[1];
             if (puedeMover(event.target.id.split('-')[1], desdeCelda)) {
                 event.target.appendChild(document.getElementById(data[1]));
                 sonidos.drop.play();
+                datosDelJuego.movimientosHechos++;
                 comprobarGanador();
                 cambiarTurno();
                 desbloquearFichas();
@@ -149,7 +150,7 @@ const comprobarGanador = () => {
     }
 
     if (ganador) {
-        if (datosDelJuego.fichasDentro !== 6) {
+        if (datosDelJuego.movimientosHechos <= 6) {
             ganador = ganador === 'x' ? 'o' : 'x';
             mostrarMensaje('Movimiento ilegal, gana el jugador ' + ganador.toUpperCase());
         } else {
