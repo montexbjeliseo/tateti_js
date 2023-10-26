@@ -111,9 +111,9 @@ const crearPanelCreditos = () => {
     }
 
     borrarDatosBoton.addEventListener('click', () => mostrarMensaje({
-        titulo: 'Borrar datos', 
-        mensaje: '¿Quieres borrar todos los datos?', 
-        botones: [{ texto: 'Borrar', callback: borrarDatos }, { texto: 'Cancelar', callback: () => {} }]
+        titulo: 'Borrar datos',
+        mensaje: '¿Quieres borrar todos los datos?',
+        botones: [{ texto: 'Borrar', callback: borrarDatos }, { texto: 'Cancelar', callback: () => { } }]
     }));
 
     botones.appendChild(borrarDatosBoton);

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TA TE TI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>TA TE TI</h1>
+        <div class="marcador">
+            <div class="label">X: <span class="points" id="puntosX">0</span></div>
+            <div class="label">O: <span class="points" id="puntosO">0</span></div>
+        </div>
+        <div><button id="reiniciar-boton">Nuevo Juego</button></div>
+        <div id="mensaje">Toca mover a jugador X</div>
+        <div class="tablero">
+            <div class="celda" id="celda-0"></div>
+            <div class="celda" id="celda-1"></div>
+            <div class="celda" id="celda-2"></div>
+            <div class="celda" id="celda-3"></div>
+            <div class="celda" id="celda-4"></div>
+            <div class="celda" id="celda-5"></div>
+            <div class="celda" id="celda-6"></div>
+            <div class="celda" id="celda-7"></div>
+            <div class="celda" id="celda-8"></div>
+        </div>
+        <div class="fichas">
+            <div class="ficha x" id="ficha-0">x</div>
+            <div class="ficha x" id="ficha-1">x</div>
+            <div class="ficha x" id="ficha-2">x</div>
+            <div class="ficha o" id="ficha-3">o</div>
+            <div class="ficha o" id="ficha-4">o</div>
+            <div class="ficha o" id="ficha-5">o</div>
+        </div>
+        <div class="panel-info">
+        </div>
+    </div>
+    <script src="tateti.js"></script>
+</body>
+
+</html>
