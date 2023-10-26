@@ -5,7 +5,7 @@ Juego simple de tateti hecho con html, css y js.
 
 Click y colocar fichas por turno, gana quién logre alinear en linea recta o diagonal tres de sus fichas. Sin no quedan casilleros libres se declara empate.
 
-![Tateti1_screenshot](Tateti1.png)
+![Tateti1_screenshot](tateti1.png)
 
 [Tateti 2](https://montexbjeliseo.github.io/tateti_js/tateti.html)
 
