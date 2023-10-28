@@ -100,3 +100,16 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.change-game-version-link {
+    position: absolute;
+    color: #fff;
+    background-color: #333;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.change-game-version-link:hover {
+    color: #333;
+    background-color: #fff;
+}
