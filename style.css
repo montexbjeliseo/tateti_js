@@ -16,7 +16,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 95vh;
     user-select: none;
 }
 
@@ -54,7 +54,6 @@ body {
     grid-template-rows: repeat(3, 1fr);
     width: var(--tablero-tamaño);
     height: var(--tablero-tamaño);
-    /* border: var(--tablero-borde) solid var(--color-trazo); */
     gap: var(--tablero-gap);
     background: url('tablero.svg');
     background-repeat: no-repeat;
@@ -64,7 +63,6 @@ body {
 .celda {
     width: var(--fichas-tamaño);
     height: var(--fichas-tamaño);
-    /* border: 3px solid var(--color-trazo); */
     display: flex;
     justify-content: center;
     align-items: center;
