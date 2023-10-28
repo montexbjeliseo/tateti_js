@@ -1,4 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
+    <defs>
+        <linearGradient id="ogradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color: #191850; stop-opacity: 1" />
+            <stop offset="100%" style="stop-color: #0e0aff; stop-opacity: 1" />
+        </linearGradient>
+    </defs>
+    
+    
     <circle cx="55" cy="55" r="45" fill="#0000009f" />
-    <circle cx="50" cy="50" r="45" fill="#3333ffff" />
+    <circle cx="50" cy="50" r="45" fill="url(#ogradient)" />
 </svg>
