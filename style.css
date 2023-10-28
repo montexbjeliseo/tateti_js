@@ -1,5 +1,8 @@
 :root {
     --color-trazo: rgba(255, 255, 255, 0.7);
+    --tablero-tamaño: 330px;
+    --fichas-tamaño: calc(var(--tablero-tamaño) / 6);
+    --tablero-gap: calc((var(--tablero-tamaño) - (var(--fichas-tamaño) * 3)) / 2)
 }
 
 body {
@@ -49,15 +52,19 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    width: calc(100px * 3 + 3px * 2 * 3);
-    height: calc(100px * 3 + 3px * 2 * 3);
-    border: 3px solid  var(--color-trazo);
+    width: var(--tablero-tamaño);
+    height: var(--tablero-tamaño);
+    /* border: var(--tablero-borde) solid var(--color-trazo); */
+    gap: var(--tablero-gap);
+    background: url('tablero.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .celda {
-    width: 100px;
-    height: 100px;
-    border: 3px solid var(--color-trazo);
+    width: var(--fichas-tamaño);
+    height: var(--fichas-tamaño);
+    /* border: 3px solid var(--color-trazo); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,28 +74,32 @@ body {
 
 .fichas {
     display: flex;
-    border: 1px solid transparent;
     width: 612px;
     height: 102px;
 }
 
 .ficha {
     display: flex;
-    width: 90px;
-    height: 90px;
+    width: var(--fichas-tamaño);
+    height: var(--fichas-tamaño);
     justify-content: center;
     align-items: center;
-    font-size: 4rem;
+    font-size: 3rem;
     user-select: contain;
-    background-color: #ffffff98;
     border-radius: 5px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.637);
+    /* box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.637); */
 }
 
 .x {
-    color: rgba(255, 0, 0, 0.7);
+    color: transparent;
+    background: url('x.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .o {
-    color: rgba(0, 0, 255, 0.7);
+    color: transparent;
+    background: url('o.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
