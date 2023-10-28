@@ -33,30 +33,36 @@ const movimientos = [
     [4, 8]
 ];
 
+const configurarEventos = () => {
+    const fichas = document.querySelectorAll('.ficha');
+    fichas.forEach(ficha => {
+        desbloquearFichas();
+        ficha.addEventListener('dragstart', arrastrar);
+    });
+    const celdas = document.querySelectorAll('.celda');
+    celdas.forEach(celda => {
+        celda.addEventListener('dragover', permitirSoltar);
+        celda.addEventListener('drop', soltar);
+    })
+
+    const nuevoJuegoBoton = document.querySelector('#reiniciar-boton');
+    nuevoJuegoBoton.addEventListener('click', () => {
+        iniciarJuego();
+    });
+}
+
+
+
 (function () {
     document.addEventListener('DOMContentLoaded', () => {
+        configurarEventos();
 
-        const fichas = document.querySelectorAll('.ficha');
-        fichas.forEach(ficha => {
-            desbloquearFichas();
-            ficha.addEventListener('dragstart', arrastrar);
-        });
-        const celdas = document.querySelectorAll('.celda');
-        celdas.forEach(celda => {
-            celda.addEventListener('dragover', permitirSoltar);
-            celda.addEventListener('drop', soltar);
-        })
-
-        const nuevoJuegoBoton = document.querySelector('#reiniciar-boton');
-        nuevoJuegoBoton.addEventListener('click', () => {
-            iniciarJuego();
-        });
     });
 })();
 
 const iniciarJuego = () => {
     datosDelJuego.enJuego = true;
-    datosDelJuego.turno = datosDelJuego.ultimoGanador??'x';
+    datosDelJuego.turno = datosDelJuego.ultimoGanador ?? 'x';
     datosDelJuego.movimientosHechos = 0;
     const fichasContainer = document.querySelector('.fichas');
     fichasContainer.append(...document.querySelectorAll('.ficha.x'));
