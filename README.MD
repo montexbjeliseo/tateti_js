@@ -13,4 +13,4 @@ Hay tres fichas para cada jugador, se arrastra al tablero por turno, empieza el 
 
 Si hay alguien hace tateti justo cuando está ingresando sus fichas al tablero (de entrada) gana el contrincante.
 
-![Tateti2_screenshot](Tateti2.png)
+![Tateti2_screenshot](tateti2.png)
