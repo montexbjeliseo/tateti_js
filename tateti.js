@@ -5,7 +5,8 @@ const datosDelJuego = {
         o: 0
     },
     enJuego: true,
-    movimientosHechos: 0
+    movimientosHechos: 0,
+    ultimoGanador: null
 };
 
 const sonidos = {
@@ -55,7 +56,7 @@ const movimientos = [
 
 const iniciarJuego = () => {
     datosDelJuego.enJuego = true;
-    datosDelJuego.turno = 'x';
+    datosDelJuego.turno = datosDelJuego.ultimoGanador??'x';
     datosDelJuego.movimientosHechos = 0;
     const fichasContainer = document.querySelector('.fichas');
     fichasContainer.append(...document.querySelectorAll('.ficha.x'));
@@ -164,6 +165,7 @@ const comprobarGanador = () => {
         }
         datosDelJuego.enJuego = false;
         datosDelJuego.puntos[ganador]++;
+        datosDelJuego.ultimoGanador = ganador;
         actualizarMarcador();
         sonidos.win.play();
     }
